@@ -2,7 +2,7 @@
 #' Classify direct, ambiguous, or no effect between exposure and network nodes.
 #'
 #' @description
-#' \lifecycle{experimental}
+#' `r lifecycle::badge('experimental')`
 #'
 #' Using the output of the [nc_estimate_exposure_links()] or [nc_estimate_outcome_links()],
 #' classify whether the exposure variable has a direct, ambiguous, or no link
@@ -88,8 +88,8 @@ keep_no_neighbour_models <- function(data, main_x_var) {
     data %>%
         dplyr::filter(dplyr::if_all(all_of("network_neighbours"), ~ . == "")) %>%
         dplyr::rename(
-            no_neighbours_fdr_p_value = .data$fdr_p_value,
-            no_neighbours_estimate = .data$estimate
+            no_neighbours_fdr_p_value = "fdr_p_value",
+            no_neighbours_estimate = "estimate"
         ) %>%
         select(all_of(
             c(

@@ -16,9 +16,9 @@ std_metabolic_data <- simulated_data %>%
     nc_standardize(starts_with("metabolite"))
 
 ## ----metabolic-standardize-residuals, eval=FALSE------------------------------
-#  std_metabolic_data <- simulated_data %>%
-#      nc_standardize(starts_with("metabolite"),
-#                     regressed_on = "age")
+# std_metabolic_data <- simulated_data %>%
+#     nc_standardize(starts_with("metabolite"),
+#                    regressed_on = "age")
 
 ## ----create-network-----------------------------------------------------------
 # Make partial independence network from metabolite data
@@ -47,23 +47,23 @@ exposure_estimates <- standardized_data %>%
 exposure_estimates
 
 ## ----estimation-adjustment, eval=FALSE----------------------------------------
-#  outcome_estimates <- standardized_data %>%
-#      nc_estimate_outcome_links(
-#          edge_tbl = as_edge_tbl(metabolite_network),
-#          outcome = "outcome_continuous",
-#          model_function = lm,
-#          adjustment_vars = "age"
-#      )
+# outcome_estimates <- standardized_data %>%
+#     nc_estimate_outcome_links(
+#         edge_tbl = as_edge_tbl(metabolite_network),
+#         outcome = "outcome_continuous",
+#         model_function = lm,
+#         adjustment_vars = "age"
+#     )
 
 ## ----future-parallel-processing, eval=FALSE-----------------------------------
-#  # You'll need to have furrr installed for this to work.
-#  library(future)
-#  plan(multisession)
-#  outcome_estimates <- standardized_data %>%
-#      nc_estimate_outcome_links(
-#          edge_tbl = as_edge_tbl(metabolite_network),
-#          outcome = "outcome_continuous",
-#          model_function = lm
-#      )
-#  plan(sequential)
+# # You'll need to have furrr installed for this to work.
+# library(future)
+# plan(multisession)
+# outcome_estimates <- standardized_data %>%
+#     nc_estimate_outcome_links(
+#         edge_tbl = as_edge_tbl(metabolite_network),
+#         outcome = "outcome_continuous",
+#         model_function = lm
+#     )
+# plan(sequential)
 
